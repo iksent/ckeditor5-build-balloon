@@ -12,6 +12,7 @@ import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Strike from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import Link from '@ckeditor/ckeditor5-link/src/link';
+import List from '@ckeditor/ckeditor5-list/src/list';
 import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
 
 export default class BalloonEditor extends BalloonEditorBase {}
@@ -24,6 +25,7 @@ BalloonEditor.builtinPlugins = [
 	Underline,
 	Strike,
 	Link,
+	List,
 	Code
 ];
 
@@ -37,6 +39,8 @@ BalloonEditor.defaultConfig = {
 			'strikethrough',
 			'|',
 			'link',
+			'bulletedList',
+			'numberedList',
 			'code'
 		]
 	},
