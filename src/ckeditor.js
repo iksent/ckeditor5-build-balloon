@@ -39,8 +39,6 @@ BalloonEditor.defaultConfig = {
 			'strikethrough',
 			'|',
 			'link',
-			'bulletedList',
-			'numberedList',
 			'code'
 		]
 	},
