@@ -5,17 +5,35 @@
 
 // The editor creator to use.
 import BalloonEditorBase from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
+import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
+import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
+import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+import Heading from '@ckeditor/ckeditor5-heading/src/heading';
+import Image from '@ckeditor/ckeditor5-image/src/image';
+import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
+import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
+import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Strike from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+import Table from '@ckeditor/ckeditor5-table/src/table';
+import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
-export default class BalloonEditor extends BalloonEditorBase {}
+class BalloonEditor extends BalloonEditorBase {}
+
+class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
 BalloonEditor.builtinPlugins = [
@@ -44,4 +62,81 @@ BalloonEditor.defaultConfig = {
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'ru'
+};
+
+ClassicEditor.builtinPlugins = [
+	Essentials,
+	SimpleUploadAdapter,
+	Autoformat,
+	Bold,
+	Italic,
+	Underline,
+	Strike,
+	Code,
+	BlockQuote,
+	Heading,
+	Image,
+	ImageCaption,
+	ImageStyle,
+	ImageToolbar,
+	ImageUpload,
+	Indent,
+	MediaEmbed,
+	Link,
+	List,
+	Paragraph,
+	Table,
+	TableToolbar,
+	TextTransformation
+];
+
+// Editor configuration.
+
+ClassicEditor.defaultConfig = {
+	toolbar: {
+		items: [
+			'heading',
+			'|',
+			'bold',
+			'italic',
+			'underline',
+			'strikethrough',
+			'link',
+			'bulletedList',
+			'numberedList',
+			'code',
+			'|',
+			'indent',
+			'outdent',
+			'|',
+			'imageUpload',
+			'blockQuote',
+			'insertTable',
+			'mediaEmbed',
+			'undo',
+			'redo'
+		]
+	},
+	image: {
+		toolbar: [
+			'imageStyle:full',
+			'imageStyle:side',
+			'|',
+			'imageTextAlternative'
+		]
+	},
+	table: {
+		contentToolbar: [
+			'tableColumn',
+			'tableRow',
+			'mergeTableCells'
+		]
+	},
+	// This value must be kept in sync with the language defined in webpack.config.js.
+	language: 'ru'
+};
+
+export default {
+	ClassicEditor,
+	BalloonEditor
 };
